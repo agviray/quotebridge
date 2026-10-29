@@ -2,7 +2,7 @@ PRAGMA foreign_keys = ON;
 
 CREATE TABLE customers (
   id INTEGER PRIMARY KEY,
-  name TEXT,
+  name TEXT NOT NULL,
   email TEXT,
   created_at TEXT DEFAULT CURRENT_TIMESTAMP
 );

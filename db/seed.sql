@@ -37,3 +37,24 @@ INSERT INTO model_options (model_id, option_id) VALUES
   (4,1),(4,2),(4,3),(4,5),(4,6),(4,7),(4,8),(4,9),
   (5,5),(5,6),(5,7),(5,8),(5,9);
 
+INSERT INTO quotes (id, customer_id, status) VALUES
+  (1, 1, 'submitted'),
+  (2, 2, 'draft'),
+  (3, 3, 'submitted'),
+  (4, 4, 'submitted'), -- Customer has no email: this one will fail to sync
+  (5, 5, 'draft'), -- Empty quote on purpose (see quote_items showing no items)
+  (6, 7, 'draft'); -- Contains a rule violation on purpose (glass on a steel door)
+
+INSERT INTO quote_items (id, quote_id, model_id, quantity, unit_price) VALUES 
+  (1, 1, 1, 1, 1940), -- Aspen 1450 + 220 + 150 + 120
+  (2, 2, 3, 2, 1480), -- Harbor 1250 + 90 + 140
+  (3, 3, 5, 3, 1380), -- Sentinel 980 + 90 + 310
+  (4, 4, 4, 1, 1970), -- Summit 1620 + 260 + 90
+  (5, 6, 5, 1, 1200); -- Sentinel 980 + 220 (clear glass is NOT allowed on steel)
+
+INSERT INTO quote_item_options (quote_item_id, option_id, price_change) VALUES
+  (1, 1, 220), (1, 4, 150), (1, 7, 120),
+  (2, 5, 90),  (2, 8, 140),
+  (3, 6, 90),  (3, 9, 310),
+  (4, 2, 260), (4, 5, 90),
+  (5, 1, 220);
